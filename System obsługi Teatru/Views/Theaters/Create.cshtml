@@ -1,0 +1,65 @@
+﻿@model System_obsługi_Teatru.Models.Theater
+
+@{
+    ViewData["Title"] = "Create";
+}
+    <style>
+               .loginBox {
+       display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      margin: 3rem auto;
+      width: 30%;
+      background-color: #fff;
+      box-shadow: 0px 0px 20px #ccc;
+      border-radius: 10px;
+    }
+    </style>
+    <div class="loginBox">
+        <h2>Login For Theater</h2>
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="TheaterName" class="control-label"></label>
+                        <input asp-for="TheaterName" class="form-control" />
+                        <span asp-validation-for="TheaterName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="City" class="control-label"></label>
+                        <input asp-for="City" class="form-control" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NoOfScreen" class="control-label"></label>
+                        <input asp-for="NoOfScreen" class="form-control" />
+                        <span asp-validation-for="NoOfScreen" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="SignUp" class="btn btn-primary" />
+                        <a style="margin-left:auto" class="btn btn-primary" name=" value="Go To Login" asp-controller="Theaters" asp-action="Login For Theater">Go To Login</a>
+                    </div>
+                </form>
+            
+      
+    </div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

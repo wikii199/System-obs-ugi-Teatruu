@@ -1,0 +1,243 @@
+﻿@model IEnumerable<System_obsługi_Teatru.Models.Movie>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background: #333545;
+    }
+
+    #NameOfCompany {
+        font-size: x-large;
+        color: white;
+    }
+
+    #secondary-nav {
+        background: #1f2533;
+        color: white;
+    }
+
+    #primary-nav {
+        background: #333545;
+        color: white;
+    }
+
+    #slider {
+        margin: 1vh;
+        width: auto;
+        height: 320px;
+        overflow: hidden;
+        position: relative;
+        background-color: transparent;
+    }
+
+    .page-wrapper,
+    .content-wrapper {
+        background: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
+
+    .content-wrapper {
+        margin-top: 1vh;
+        margin-bottom: 0vh;
+        margin-left: 4vw;
+        margin-right: 4vw;
+        padding: 2vh 2vw;
+    }
+
+    .headingOfContent {
+        height: 14vh;
+    }
+
+    .list {
+        padding-top: 0.6vh;
+    }
+
+    .headingList {
+        display: inline;
+        margin-left: 1vw;
+    }
+
+    .Nowshowing {
+        color: black;
+    }
+
+    .Upcoming {
+        color: black;
+    }
+
+    .selected {
+        font-size: large;
+        background-color: rgba(243, 194, 194, 0.932);
+    }
+
+    .MoviesFilter {
+        float: left;
+    }
+
+    #calender {
+        margin-top: 1vh;
+        margin-bottom: 3vh;
+    }
+
+    .year {
+        margin-bottom: 2vh;
+    }
+
+    button {
+        padding: 0.5vh 0.5vw;
+        border-color: rgb(199, 198, 198);
+        border-radius: 0.7vh;
+        -webkit-border-radius: 0.7vh;
+        -moz-border-radius: 0.7vh;
+        -ms-border-radius: 0.7vh;
+        -o-border-radius: 0.7vh;
+    }
+
+    .yearInButtonclick,
+    .monthINButtonclick {
+        background-color: #0072FF;
+        color: white;
+    }
+
+    #navHome {
+        background-color: aliceblue;
+    }
+</style>
+<div id="slider">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://source.unsplash.com/1360x320/?theater" class="d-block w-100" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" style="color: black;">
+    <h1 class="text-center my-5" style="color: #3F51B5;">Welcome to Our Theater</h1>
+    <p>We are thrilled to welcome you to our historic <span style="color: #4CAF50;">theater</span>, where we have been entertaining audiences for over 100 years. Our theater is dedicated to providing the best in live performances, from <span style="color: #9C27B0;">Broadway musicals</span> to <span style="color: #2196F3;">classic plays</span>.</p>
+    <p>We are proud to be a cultural hub in our community, and we offer a wide range of shows to suit every taste. Whether you're a theater veteran or a first-time attendee, we guarantee you'll find something to enjoy at our theater.</p>
+    <p>Take a look at our upcoming shows and buy your tickets today. We look forward to seeing you at the theater!</p>
+</div>
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {                          
+                                <div class="column">
+                                    <div class="card" style="width: 18rem;">
+                                            <img src="@Html.DisplayFor(modelItem => item.PosterUrl)" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">@Html.DisplayFor(modelItem => item.MovieName)</h5>
+                                                <p class="card-text">Genre:- @Html.DisplayFor(modelItem => item.Genre)</p>
+                                                <p>Writre Movie Name</p>
+                                                @using (Html.BeginForm("BookingPhase1", "Shows", FormMethod.Post))
+                                                {
+                                                    @Html.TextBox("MovieName")
+                                                    <input type="submit" class="btn btn-primary" value="Buy Tickets">
+                                                }
+
+                                            </div>
+                                    </div>
+                                </div>                            
+                        }
+                    </div>
+
+     @section Scripts{
+    <script>
+        $(document).ready(function () {
+            console.log("index page is loaded!!");
+        });
+        $(document).ready(function () {
+            $(".Upcoming").click(function () {
+                if ($("#aOfNow").hasClass('selected') == true) {
+                    $("#aOfNow").removeClass("selected");
+                    $(".Upcoming").addClass("selected");
+                    $("#headingOfMovieShowcaseing").text("UpComing Movies");
+                }
+            });
+        });
+        $(document).ready(function () {
+            $("#aOfNow").click(function () {
+                if ($("#aOfNow").hasClass('selected') != true) {
+                    $("#aOfNow").addClass("selected");
+                    $(".Upcoming").removeClass("selected");
+                    $("#headingOfMovieShowcaseing").text("Current Movies");
+                }
+            });
+        });
+        $(document).ready(function () {
+
+            $('.nav-link').hover(function () {
+                $(this).css("background-color", "grey");
+            },
+                function () {
+                    $(this).css("background-color", " #1f2533");
+                });
+        });
+        $(document).ready(function () {
+
+            $('.active').hover(function () {
+                $(this).css("background-color", "grey");
+            },
+                function () {
+                    $(this).css("background-color", "white");
+                });
+        });
+        $(document).ready(function () {
+
+            $('.yearInButton').hover(function () {
+                $(this).css("background-color", "#0078FF").css("color", "white");
+            },
+                function () {
+                    $(this).css("background-color", "#F2F2F2").css("color", "black");
+                });
+            $('.monthINButton').hover(function () {
+                $(this).css("background-color", "#0078FF").css("color", "white");
+            },
+                function () {
+                    $(this).css("background-color", "#F2F2F2").css("color", "black");
+                });
+
+
+        });
+
+        $(document).ready(function () {
+            $("button").click(function () {
+
+                $(this).toggleClass(".yearInButtonclick");
+            });
+
+
+        });
+        $(document).ready(function () {
+
+            $('.monthINButton').click(function () {
+                $(this).toggleClass("monthINButtonclick");
+            });
+
+        });
+
+        $(document).ready(function () {
+            if ($("#aOfNow").hasClass('selected') == true) {
+                $("#calender").hide();
+            }
+            $("#aOfNow").click(function () {
+
+                $("#calender").hide();
+            });
+            $(".Upcoming").click(function () {
+                $("#calender").show();
+            });
+        });
+    </script>
+
+}              
