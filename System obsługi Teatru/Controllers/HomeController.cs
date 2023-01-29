@@ -45,20 +45,6 @@ namespace System_obsługi_Teatru.Controllers
             return View();
         }
 
-        public IActionResult AboutUs()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult ContactUs()
-        {
-            return View();
-        }
-
-       
-
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

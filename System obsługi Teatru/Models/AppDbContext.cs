@@ -16,6 +16,6 @@ namespace System_obsługi_Teatru.Models
         public DbSet<Theater> Theaters { get; set; }
         public DbSet<Show> Shows { get; set; }
         public DbSet<Booking> Bookings { get; set; }
-        public DbSet<Query> Querys { get; set; }
+        
     }
 }
